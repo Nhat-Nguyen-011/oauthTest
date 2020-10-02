@@ -5,9 +5,7 @@ require('./passport-init');
 
 //PRIVATE SERVER DEV CONFIGS
 
-const PORT = 4000;
-const serverURL = 'http://localhost:4000';
-const clientURL = 'http://localhost:3000';
+const PORT = 3111;
 
 //END CONFIGS
 
@@ -49,7 +47,8 @@ app.get(
     console.log('THIS IS BEFORE REDIRECTVVVV');
     console.log(req.user);
     console.log('THIS IS BEFORE REDIRECT^^^^');
-    res.redirect('http://localhost:4000/success');
+    res.setHeader('Authorization', 'IF YOU SEE THIS, THE TEST IS COMPLETE');
+    res.json(req.user);
   }
 );
 

@@ -24,9 +24,9 @@ passport.use(
       //if not create user with email and name, then must ask for name and unique handle before full access
       //if email exist then return a refreshToken
       console.log('THIS RUN AFTER SUCCESS');
-      console.log(`This is ${profile}`);
+      console.log(`This is profile id ${profile.id}`);
       console.log('-----------------------');
-      return cb(null, profile.id);
+      return cb(null, profile);
       //return profile id to serilize function above
     }
   )
