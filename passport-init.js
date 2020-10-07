@@ -17,7 +17,7 @@ passport.use(
       clientID:
         "1064798903066-89jln5roavgbleqlbt9ahl0ebpo9ae3u.apps.googleusercontent.com",
       clientSecret: "RT2-EteVF6OsM2cFtlBuN5xB",
-      callbackURL: "http://localhost:4000/google/callback",
+      callbackURL: "https://nguyennhat.work/oauth-test/google/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
       //Check if email exist
