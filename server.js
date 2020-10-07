@@ -5,7 +5,7 @@ require("./passport-init");
 
 //PRIVATE SERVER DEV CONFIGS
 
-const PORT = 4000;
+const PORT = 12000;
 
 //END CONFIGS
 
