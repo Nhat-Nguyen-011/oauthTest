@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const passport = require("passport");
+const session = require("express-session");
 require("./passport-init");
 
 //PRIVATE SERVER DEV CONFIGS
@@ -15,7 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
+app.use(session({ secret: "cats" }));
 
 app.get("/", (req, res) => res.send("this is default page"));
 app.get("/fail", (req, res) => res.send("login failed"));
@@ -29,10 +31,16 @@ app.get("/test", (req, res) => {
   res.send("testttt");
 });
 
+app.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
+
 app.get("/success", (req, res) => {
   res.send("success");
 });
 
+//GOOGLE CALL BACK
 app.get(
   "/google",
   passport.authenticate("google", {
@@ -48,6 +56,96 @@ app.get(
 app.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/fail" }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
+//FACEBOOK CALL BACK
+
+app.get("/facebook", passport.authenticate("facebook"));
+
+app.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
+//TWITTER CALL BACK
+
+app.get("/twitter", passport.authenticate("twitter"));
+
+app.get(
+  "/twitter/callback",
+  passport.authenticate("twitter", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
+//KAKAOTALK CALLBACK
+
+app.get(
+  "/kakaotalk",
+  passport.authenticate("kakao", {
+    failureRedirect: "/fail",
+  })
+);
+
+app.get(
+  "/kakaotalk/callback",
+  passport.authenticate("kakao", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
+//NAVER CALLBACK
+
+app.get(
+  "/naver",
+  passport.authenticate("naver", {
+    failureRedirect: "/fail",
+  })
+);
+
+app.get(
+  "/naver/callback",
+  passport.authenticate("naver", {
+    failureRedirect: "/fail",
+  }),
   (req, res) => {
     console.log(req.ip);
     console.log(req.headers["user-agent"]);
