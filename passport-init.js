@@ -67,8 +67,8 @@ passport.use(
 passport.use(
   new TwitterStrategy(
     {
-      consumerKey: "eXZJudAq0Ofyc2wMXgRCQWgbB",
-      consumerSecret: "V1v4BtI2KJFJ7yVylEyIZqeYppbfeBGke4FBw6RRzhrYVawv5c",
+      consumerKey: "lyIzzAQVV3RMnSsBrfixpOejt",
+      consumerSecret: "T8bjmgRMUNQLKa63zqxAX7MCbv3Nb6maCpZ5bWYwMpzHsmE97Z",
       callbackURL: "https://nguyennhat.work/oauth-test/twitter/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
