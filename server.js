@@ -48,8 +48,8 @@ app.get(
       "https://www.googleapis.com/auth/userinfo.profile",
       "https://www.googleapis.com/auth/userinfo.email",
     ],
+    prompt: "consent",
     accessType: "offline",
-    approvalPrompt: "force",
   })
 );
 
