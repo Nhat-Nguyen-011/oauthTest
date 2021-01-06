@@ -89,8 +89,8 @@ passport.use(
 passport.use(
   new KakaoStrategy(
     {
-      clientID: "84d2364d0dd4619ce2b1d10de32b905f",
-      clientSecret: "eg9QKdIJJqJ2NHIcazgqikXJcKMM5Mts", // clientSecret을 사용하지 않는다면 넘기지 말거나 빈 스트링을 넘길 것
+      clientID: "3e227b14d04549df4e0233a3356dc663",
+      clientSecret: "FtYVCfAboNcXzdPHu83kbd07r1iuMlFo", // clientSecret을 사용하지 않는다면 넘기지 말거나 빈 스트링을 넘길 것
       callbackURL: "https://nguyennhat.work/oauth-test/kakaotalk/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
