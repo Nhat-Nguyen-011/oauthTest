@@ -111,8 +111,8 @@ passport.use(
 passport.use(
   new NaverStrategy(
     {
-      clientID: "Sh1RzXRNy4IvKAfpu8Xo",
-      clientSecret: "h2zMalnPeH",
+      clientID: "z8RCfP2okhxLCz6YUEf7",
+      clientSecret: "veeMVnwAtk",
       callbackURL: "https://nguyennhat.work/oauth-test/naver/callback",
     },
     (accessToken, refreshToken, profile, cb) => {
