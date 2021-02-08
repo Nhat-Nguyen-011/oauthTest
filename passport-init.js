@@ -4,6 +4,8 @@ const FacebookStrategy = require("passport-facebook");
 const TwitterStrategy = require("passport-twitter").Strategy;
 const KakaoStrategy = require("passport-kakao").Strategy;
 const NaverStrategy = require("passport-naver").Strategy;
+const YoutubeV3Strategy = require('passport-youtube-v3').Strategy;
+const InstagramStrategy = require('passport-instagram').Strategy
 
 passport.serializeUser(function (user, done) {
   console.log("THIS RUN IN SER");
@@ -127,3 +129,36 @@ passport.use(
     }
   )
 );
+
+
+//YOUTUBE STRATEGY
+passport.use(new YoutubeV3Strategy({
+  clientID: '219398965782-balhdbrluv9oqs9ek1m2erndo7nraakd.apps.googleusercontent.com',
+  clientSecret: 'zRcxk5AtifYMW2Cqyzq3nSPu',
+  callbackURL: "https://nguyennhat.work/oauth-test/youtube/callback",
+  scope: ['https://www.googleapis.com/auth/youtube.readonly']
+},
+  function (accessToken, refreshToken, profile, done) {
+    console.log("THIS RUN AFTER SUCCESS");
+    console.log(`This is profile id ${profile.id}`);
+    console.log(`This is access token ${accessToken}`);
+    console.log(`This is refresh token ${refreshToken}`);
+    console.log("-----------------------");
+    profile.accessToken = accessToken;
+    profile.refreshToken = refreshToken;
+    return done(err, user);
+  }
+));
+
+// INSTAGRAM STRATEGY
+passport.use(new InstagramStrategy({
+  clientID: '715179362529531',
+  clientSecret: '2c7be92f4b7fe4fb6895d36d97ce9a9a',
+  callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback"
+},
+  function (accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ instagramId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));

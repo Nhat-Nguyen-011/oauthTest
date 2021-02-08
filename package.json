@@ -18,6 +18,8 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-kakao": "^1.0.0",
     "passport-naver": "^1.0.6",
-    "passport-twitter": "^1.0.4"
+    "passport-twitter": "^1.0.4",
+    "passport-instagram": "^1.0.0",
+    "passport-youtube-v3": "^2.1.0"
   }
 }

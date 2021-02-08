@@ -157,4 +157,52 @@ app.get(
   }
 );
 
+//YOUTOBE CALLBACK
+
+app.get(
+  "/youtube",
+  passport.authenticate("youtube", {
+    failureRedirect: "/fail",
+  })
+);
+app.get(
+  "/youtube/callback",
+  passport.authenticate("youtube", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
+//INSTAGRAM CALLBACK
+
+app.get(
+  "/instagram",
+  passport.authenticate("instagram", {
+    failureRedirect: "/fail",
+  })
+);
+app.get(
+  "/instagram/callback",
+  passport.authenticate("instagram", {
+    failureRedirect: "/fail",
+  }),
+  (req, res) => {
+    console.log(req.ip);
+    console.log(req.headers["user-agent"]);
+    console.log("THIS IS BEFORE REDIRECTVVVV");
+    console.log(req.user);
+    console.log("THIS IS BEFORE REDIRECT^^^^");
+    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    res.json(req.user);
+  }
+);
+
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
