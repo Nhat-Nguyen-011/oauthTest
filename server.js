@@ -195,12 +195,12 @@ app.get(
     failureRedirect: "/fail",
   }),
   (req, res) => {
-    console.log(req.ip);
-    console.log(req.headers["user-agent"]);
-    console.log("THIS IS BEFORE REDIRECTVVVV");
-    console.log(req.user);
-    console.log("THIS IS BEFORE REDIRECT^^^^");
-    res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
+    // console.log(req.ip);
+    // console.log(req.headers["user-agent"]);
+    // console.log("THIS IS BEFORE REDIRECTVVVV");
+    // console.log(req.user);
+    // console.log("THIS IS BEFORE REDIRECT^^^^");
+    // res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
     res.json(req.user);
   }
 );

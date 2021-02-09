@@ -155,16 +155,16 @@ passport.use(new InstagramStrategy({
   clientID: '171696981121619',
   clientSecret: '5d7238af9bab3cd6d7bb8fb6e3e2678c',
   callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
-  scope: 'user_profile,user_media,user_read'
+  scope: 'user_profile,user_media'
 },
   function (accessToken, refreshToken, profile, done) {
-    console.log("THIS RUN AFTER SUCCESS");
-    console.log(`This is profile id ${profile.id}`);
-    console.log(`This is access token ${accessToken}`);
-    console.log(`This is refresh token ${refreshToken}`);
-    console.log("-----------------------");
-    profile.accessToken = accessToken;
-    profile.refreshToken = refreshToken;
+    // console.log("THIS RUN AFTER SUCCESS");
+    // console.log(`This is profile id ${profile.id}`);
+    // console.log(`This is access token ${accessToken}`);
+    // console.log(`This is refresh token ${refreshToken}`);
+    // console.log("-----------------------");
+    // profile.accessToken = accessToken;
+    // profile.refreshToken = refreshToken;
     return done(null, profile);
   }
 ));
