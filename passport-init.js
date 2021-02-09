@@ -154,7 +154,8 @@ passport.use(new YoutubeV3Strategy({
 passport.use(new InstagramStrategy({
   clientID: '171696981121619',
   clientSecret: '5d7238af9bab3cd6d7bb8fb6e3e2678c',
-  callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback"
+  callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
+  scope: 'user_profile,user_media,user_read'
 },
   function (accessToken, refreshToken, profile, done) {
     console.log("THIS RUN AFTER SUCCESS");
@@ -164,6 +165,6 @@ passport.use(new InstagramStrategy({
     console.log("-----------------------");
     profile.accessToken = accessToken;
     profile.refreshToken = refreshToken;
-    return done(err, profile);
+    return done(null, profile);
   }
 ));
