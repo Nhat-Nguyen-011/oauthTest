@@ -153,7 +153,7 @@ passport.use(new YoutubeV3Strategy({
 // INSTAGRAM STRATEGY
 passport.use(new InstagramStrategy({
   clientID: '715179362529531',
-  clientSecret: '8ffee8f1b38898e17aeec0eada99a9a5',
+  clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
   callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
   scope: 'user_profile,user_media'
 },
