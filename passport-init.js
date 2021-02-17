@@ -173,7 +173,7 @@ passport.use(
       clientID: '715179362529531',
       clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
       callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
-      // scope: 'user_profile,user_media'
+      scope: 'user_profile,user_media'
     },
     (accessToken, refreshToken, profile, done) => {
       // console.log("THIS RUN AFTER SUCCESS");
