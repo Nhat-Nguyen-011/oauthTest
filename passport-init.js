@@ -157,7 +157,7 @@ passport.use(new YoutubeV3Strategy({
 //       clientID: '715179362529531',
 //       clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
 //       callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
-//       scope: 'user_profile,user_media'
+//       scope: 'user_profile'
 //     },
 //     (accessToken, refreshToken, profile, cb) => {
 //       console.log("THIS RUN AFTER SUCCESS");
@@ -172,7 +172,7 @@ passport.use(
     {
       clientID: '715179362529531',
       clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
-      callbackURL: "http://localhost:12000/instagram/callback",
+      callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
       scope: 'user_profile'
     },
     (accessToken, refreshToken, profile, cb) => {
@@ -181,8 +181,6 @@ passport.use(
       console.log(`This is access token ${accessToken}`);
       console.log(`This is refresh token ${refreshToken}`);
       console.log("-----------------------");
-      profile.accessToken = accessToken;
-      profile.refreshToken = refreshToken;
       return cb(null, profile);
     }
   )
