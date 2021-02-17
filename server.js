@@ -201,7 +201,7 @@ app.get(
     console.log(req.user);
     console.log("THIS IS BEFORE REDIRECT^^^^");
     res.setHeader("Authorization", "IF YOU SEE THIS, THE TEST IS COMPLETE");
-    res.json(req);
+    res.json(req.user);
   }
 );
 

@@ -146,7 +146,7 @@ passport.use(new YoutubeV3Strategy({
     console.log("-----------------------");
     profile.accessToken = accessToken;
     profile.refreshToken = refreshToken;
-    return done(err, profile);
+    return done(null, profile);
   }
 ));
 
