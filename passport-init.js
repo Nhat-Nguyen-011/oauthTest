@@ -151,14 +151,39 @@ passport.use(new YoutubeV3Strategy({
 ));
 
 // INSTAGRAM STRATEGY
-passport.use(new InstagramStrategy({
-  clientID: '715179362529531',
-  clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
-  callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
-  scope: 'user_profile,user_media'
-},
-  function (accessToken, refreshToken, profile, done) {
-    console.log("THIS RUN AFTER SUCCESS");
-      return done(null, profile);
-  }
-));
+// passport.use(
+//   new InstagramStrategy(
+//     {
+//       clientID: '715179362529531',
+//       clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
+//       callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
+//       scope: 'user_profile,user_media'
+//     },
+//     (accessToken, refreshToken, profile, cb) => {
+//       console.log("THIS RUN AFTER SUCCESS");
+//       return cb(null, profile);
+//     }
+//   )
+// );
+
+
+passport.use(
+  new InstagramStrategy(
+    {
+      clientID: '715179362529531',
+      clientSecret: 'f1909a203ddb996e84f0d600d0e628ca',
+      callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
+      // scope: 'user_profile,user_media'
+    },
+    (accessToken, refreshToken, profile, cb) => {
+      console.log("THIS RUN AFTER SUCCESS");
+      console.log(`This is profile id ${profile.id}`);
+      console.log(`This is access token ${accessToken}`);
+      console.log(`This is refresh token ${refreshToken}`);
+      console.log("-----------------------");
+      profile.accessToken = accessToken;
+      profile.refreshToken = refreshToken;
+      return cb(null, profile);
+    }
+  )
+);
