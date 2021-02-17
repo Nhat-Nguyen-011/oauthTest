@@ -175,15 +175,39 @@ passport.use(
       callbackURL: "https://nguyennhat.work/oauth-test/instagram/callback",
       // scope: 'user_profile,user_media'
     },
-    (accessToken, refreshToken, profile, cb) => {
-      console.log("THIS RUN AFTER SUCCESS");
-      console.log(`This is profile id ${profile.id}`);
-      console.log(`This is access token ${accessToken}`);
-      console.log(`This is refresh token ${refreshToken}`);
-      console.log("-----------------------");
-      profile.accessToken = accessToken;
-      profile.refreshToken = refreshToken;
-      return cb(null, profile);
+    (accessToken, refreshToken, profile, done) => {
+      // console.log("THIS RUN AFTER SUCCESS");
+      // console.log(`This is profile id ${profile.id}`);
+      // console.log(`This is access token ${accessToken}`);
+      // console.log(`This is refresh token ${refreshToken}`);
+      // console.log("-----------------------");
+      // profile.accessToken = accessToken;
+      // profile.refreshToken = refreshToken;
+      // return cb(null, profile);
+      this._oauth2.get('https://api.instagram.com/v1/users/self', accessToken, function (err, body, res) {
+        if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }
+
+        try {
+          var json = JSON.parse(body);
+
+          var profile = { provider: 'instagram' };
+          profile.id = json.data.id;
+          profile.displayName = json.data.full_name;
+          profile.name = {
+            familyName: json.data.last_name,
+            givenName: json.data.first_name
+          };
+          profile.username = json.data.username;
+
+          profile._raw = body;
+          profile._json = json;
+
+          done(null, profile);
+        } catch (e) {
+          done(e);
+        }
+      }
+      )
     }
   )
 );
